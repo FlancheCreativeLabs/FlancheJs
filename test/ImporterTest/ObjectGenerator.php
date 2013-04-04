@@ -208,7 +208,6 @@ class ValueGenerator {
       default:
         throw new \RuntimeException("No known value type supplied: " . var_export($type, TRUE));
     }
-    ;
   }
 
   private static function getRandomString($length = 10, $alfaOnly = FALSE, $quoted = TRUE) {

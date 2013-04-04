@@ -10,8 +10,10 @@
  * @param {Object} methods a map of the methods to be defined or null
  * @param {Object} internals a map of private variables to be defined or null
  * @param {Object} statics a map of properties to be preserved across the class
+ * @param {Object} meta a map of actions to be executed in special cases (e.g. before an accessor for a property is
+ * called)
  */
-function ClassMetadata(className, init, extendedClass, traits, properties, methods, internals, statics){
+function ClassMetadata(className, init, extendedClass, traits, properties, methods, internals, statics, meta){
   this.className = className;
   this.init = init || Util.emptyFunction();
   this.extendedClass = extendedClass;
@@ -19,7 +21,8 @@ function ClassMetadata(className, init, extendedClass, traits, properties, metho
   this.properties = properties || {};
   this.methods = methods || {};
   this.internals = internals || {};
-  this.statics = statics;
+  this.statics = statics || {};
+  this.meta = meta || {};
   this.buildFinalDefinition();
 }
 

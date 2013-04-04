@@ -1,10 +1,32 @@
 /**
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
  * This file is used together with InternalFooter.js to enclose the files on deployment
  * in a function to limit the scope of the variables in this library
  */
 
 (function(){
   "use strict";
+/**
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
 /**
  * Defines a set of constants that can be used across the library
  */
@@ -38,86 +60,100 @@ var ConfigManager = {
   setIdentifier           : "set",
   //Classes for static objects will start with this
   objectInternalIdentifier: "___",
+  //The keyword to mark a meta action executed before the original method
+  beforeKeyword           : "before",
+  //The keyword to mark a meta action executed after the original method
+  afterKeyword            : "after",
   //The log level, each smaller level contains all the messages of the higher levels.
   logLevel                : LOG_LEVEL.debug,
   //the specs object that describes your class structure
   specs                   : null
-}
+};
 
-ConfigManager.setApplicationPath = function(appPath){
+ConfigManager.setApplicationPath = function (appPath) {
   this.applicationPath = appPath;
-}
+};
 
-ConfigManager.getApplicationPath = function(){
-  if(this.applicationPath === null){
+ConfigManager.getApplicationPath = function () {
+  if (this.applicationPath === null) {
     var scripts = window.document.getElementsByTagName("script");
-    for(var i = 0; i < scripts.length; i++){
-      if(scripts[i].getAttribute("src").search("FlancheJs") != -1){
+    for (var i = 0; i < scripts.length; i++) {
+      if (scripts[i].getAttribute("src").search("FlancheJs") != -1) {
         this.applicationPath = scripts[i].getAttribute("src").split("FlancheJs")[0];
       }
     }
     Util.log("No application path found, guessing: " + this.applicationPath + ". You can change it using FlancheJs.config.setApplicationPath().", LOG_LEVEL.warning);
   }
   return this.applicationPath;
-}
+};
 
-ConfigManager.setPropertyIdentifier = function(propIdent){
+ConfigManager.setPropertyIdentifier = function (propIdent) {
   this.propertyIdentifier = propIdent;
-}
+};
 
-ConfigManager.getPropertyIdentifier = function(){
+ConfigManager.getPropertyIdentifier = function () {
   return this.propertyIdentifier;
-}
+};
 
-ConfigManager.setInternalIdentifier = function(internalIdentifier){
+ConfigManager.setInternalIdentifier = function (internalIdentifier) {
   this.internalIdentifier = internalIdentifier;
-}
+};
 
-ConfigManager.getInternalIdentifier = function(){
+ConfigManager.getInternalIdentifier = function () {
   return this.internalIdentifier;
-}
+};
 
-ConfigManager.setGetIdentifier = function(getIdentifier){
+ConfigManager.setGetIdentifier = function (getIdentifier) {
   this.getIdentifier = getIdentifier;
-}
+};
 
-ConfigManager.getGetIdentifier = function(){
+ConfigManager.getGetIdentifier = function () {
   return this.getIdentifier;
-}
+};
 
-ConfigManager.setSetIdentifier = function(setIdentifier){
+ConfigManager.setSetIdentifier = function (setIdentifier) {
   this.setIdentifier = setIdentifier;
-}
+};
 
-ConfigManager.getSetIdentifier = function(){
+ConfigManager.getSetIdentifier = function () {
   return this.setIdentifier;
-}
+};
 
-ConfigManager.setObjectInternalIdentifier = function(objectInternalIdentifier){
+ConfigManager.setObjectInternalIdentifier = function (objectInternalIdentifier) {
   this.objectInternalIdentifier = objectInternalIdentifier;
-}
+};
 
-ConfigManager.getObjectInternalIdentifier = function(){
+ConfigManager.getObjectInternalIdentifier = function () {
   return this.objectInternalIdentifier;
-}
+};
 
-ConfigManager.setLogLevel = function(logLevel){
+ConfigManager.setLogLevel = function (logLevel) {
   this.logLevel = logLevel;
-}
+};
 
-ConfigManager.getLogLevel = function(){
+ConfigManager.getLogLevel = function () {
   return this.logLevel;
-}
+};
 
-ConfigManager.setSpecs = function(specs){
+ConfigManager.setSpecs = function (specs) {
   this.specs = specs;
-}
+};
 
-ConfigManager.getSpecs = function(specs){
+ConfigManager.getSpecs = function () {
   return this.specs;
-}/**
- * @description Defines a new Exception type in order to make it easier for clients to catch library exceptions
+};/**
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
+ * @description Defines a new Exception type in order to make it easier for clients to catch library exceptions
  * @constructor
  * @param {String} message the error message
  * @extends Error
@@ -126,9 +162,9 @@ ConfigManager.getSpecs = function(specs){
 function FlancheJsException(message){
   this.message = message;
 }
-FlancheJsException.prototype.valueOf = FlancheJsException.prototype.toString = function(){
+FlancheJsException.prototype.valueOf = FlancheJsException.prototype.toString = function () {
   return  this.name + ": " + this.message;
-}
+};
 
 function BuildException(){
   FlancheJsException.apply(this, arguments);
@@ -144,8 +180,18 @@ ImportException.prototype = new FlancheJsException();
 ImportException.prototype.constructor = ImportException;
 ImportException.prototype.name = "ImportException";
 /**
- * @description Utility functions for the library
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
+ * @description Utility functions for the library
  */
 var Util = {
   /**
@@ -357,8 +403,20 @@ var Util = {
 };
 
 /**
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
  * Class for defining specification objects for javascript files created with
  * this framework
+ * @param {String} objectName the name of the object for which the spec is written (e.g. class name)
  * @param {String} filePath the path to the file relative to ConfigManager.getApplicationPath
  * @param {Array} dependencies a list of specs that the file is dependent on
  * @constructor
@@ -398,6 +456,18 @@ Spec.prototype.getFilePath = function(){
   return this.filePath;
 };
 /**
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ *  @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
  * Packaging system for retrieving the files in which the classes are stored
  * @param specs a hash of type {objectName : objectSpec}
  * @constructor
@@ -411,26 +481,25 @@ function Importer(specs){
   this.collectedObjects = {};
 }
 
-Importer.prototype.import = function(objectName, callback, context){
-  console.log(1,objectName,callback)
+Importer.prototype.import = function (objectName, callback, context) {
   this.collectFiles(objectName);
   this.importCollectedObjects(callback, context);
   this.collectedObjects = {};
-}
+};
 
-Importer.prototype.collectFiles = function(objectName){
-  if(!Util.exists(this.collectedObjects[objectName])){
-    if(!Util.exists(this.specs[objectName])){
+Importer.prototype.collectFiles = function (objectName) {
+  if (!Util.exists(this.collectedObjects[objectName])) {
+    if (!Util.exists(this.specs[objectName])) {
       throw new ImportException("Could not find a suitable spec object for " + objectName + ". Make sure it is included in FlancheJs.config.getSpecs();");
     }
     var spec = this.specs[objectName];
     var deps = spec.getDependencies();
-    for(var i = 0; i < deps.length; i++){
+    for (var i = 0; i < deps.length; i++) {
       this.collectFiles(deps[i]);
     }
     this.collectedObjects[objectName] = objectName;
   }
-}
+};
 
 Importer.prototype.importCollectedObjects = function(callback, context){
   var paths = [];
@@ -854,8 +923,10 @@ Importer.prototype.loadScripts = (function(doc){
  * @param {Object} methods a map of the methods to be defined or null
  * @param {Object} internals a map of private variables to be defined or null
  * @param {Object} statics a map of properties to be preserved across the class
+ * @param {Object} meta a map of actions to be executed in special cases (e.g. before an accessor for a property is
+ * called)
  */
-function ClassMetadata(className, init, extendedClass, traits, properties, methods, internals, statics){
+function ClassMetadata(className, init, extendedClass, traits, properties, methods, internals, statics, meta){
   this.className = className;
   this.init = init || Util.emptyFunction();
   this.extendedClass = extendedClass;
@@ -863,7 +934,8 @@ function ClassMetadata(className, init, extendedClass, traits, properties, metho
   this.properties = properties || {};
   this.methods = methods || {};
   this.internals = internals || {};
-  this.statics = statics;
+  this.statics = statics || {};
+  this.meta = meta || {};
   this.buildFinalDefinition();
 }
 
@@ -910,28 +982,26 @@ ClassMetadata.prototype.checkTraitNeeds = function(trait){
  * @constructor
  * @param {ClassMetadata} classMetadata the class metadata supplied
  */
-function ClassMaker(classMetadata){
+function ClassMaker(classMetadata) {
   this.constrClass = null;
   this.classMetadata = classMetadata;
 }
 
 /**
  * Creates the initial class object
- * @param {String} fullClassName the full name of the class, including the namespace
- * @return {Object} the constructed class
  */
-ClassMaker.prototype.createClass = function(){
+ClassMaker.prototype.createClass = function () {
   var parts = this.classMetadata.className.split(".");
   var className = parts.pop();
   var container = Util.createNamespace(parts.join("."));
 
-  container[className] = function builder(){
+  container[className] = function builder() {
     var properties = this.__meta__.properties;
     var internals = this.__meta__.internals;
-    for(var index in properties){
+    for (var index in properties) {
       this[ConfigManager.getPropertyIdentifier() + index] = Util.clone(properties[index].value);
     }
-    for(index in internals){
+    for (index in internals) {
       this[ConfigManager.getInternalIdentifier() + index] = Util.clone(internals[index]);
     }
     this.__meta__.init.apply(this, arguments);
@@ -945,12 +1015,12 @@ ClassMaker.prototype.createClass = function(){
  * Builds the prototype for the new class based on the existing class
  * if so
  */
-ClassMaker.prototype.buildPrototype = function(){
-  if(Util.exists(this.classMetadata.extendedClass)){
+ClassMaker.prototype.buildPrototype = function () {
+  if (Util.exists(this.classMetadata.extendedClass)) {
     this.constrClass.prototype = new this.classMetadata.extendedClass();
     this.constrClass.prototype.constructor = this.constrClass;
 
-    this.constrClass.prototype.callParent = function(){
+    this.constrClass.prototype.callParent = function () {
       this.__meta__.extendedClass.apply(this, arguments);
     };
   }
@@ -959,7 +1029,7 @@ ClassMaker.prototype.buildPrototype = function(){
 /**
  * Adds the metadata to the class prototype
  */
-ClassMaker.prototype.buildMeta = function(){
+ClassMaker.prototype.buildClassMeta = function () {
   this.constrClass.prototype.__meta__ = this.classMetadata;
 };
 
@@ -967,30 +1037,76 @@ ClassMaker.prototype.buildMeta = function(){
  * Adds the properties to the class prototype and generates setters and
  * getters for each based on their readability / writability
  */
-ClassMaker.prototype.buildProperties = function(){
-  for(var index in this.classMetadata.properties){
+ClassMaker.prototype.buildProperties = function () {
+  for (var index in this.classMetadata.properties) {
     var property = this.classMetadata.properties[index];
     this.constrClass.prototype[ConfigManager.getPropertyIdentifier() + index] = property.value;
-    if(property.readable !== false){
-      var getter = Util.exists(property.get) ? property.get : function(){
-        return this[ConfigManager.getPropertyIdentifier() + index];
-      };
+    if (property.readable !== false) {
+      var getter = this.getPropertyAccessor(index, property, "get");
       this.constrClass.prototype[ConfigManager.getGetIdentifier() + Util.capitalizeFirstLetter(index)] = getter;
     }
-    if(property.writable !== false){
-      var setter = Util.exists(property.set) ? property.set : function(value){
-        this[ConfigManager.getPropertyIdentifier() + index] = value;
-      };
+    if (property.writable !== false) {
+      var setter = this.getPropertyAccessor(index, property, "set");
       this.constrClass.prototype[ConfigManager.getSetIdentifier() + Util.capitalizeFirstLetter(index)] = setter;
     }
   }
 };
 
 /**
+ *
+ * @param {String} propertyName the property name
+ * @param {Object} property the actual property, containing any user supplied getter or setter
+ * @param {String} accessorType either get or set
+ * @return {Function} the accessor function
+ */
+ClassMaker.prototype.getPropertyAccessor = function (propertyName, property, accessorType) {
+  var preAccessor = Util.exists(property[accessorType]) ? property[accessorType] : null;
+  if(preAccessor === null && accessorType === "get"){
+    preAccessor = function () {
+      return this[ConfigManager.getPropertyIdentifier() + propertyName];
+    };
+  }
+  else if(preAccessor === null && accessorType === "set"){
+    preAccessor = function (value) {
+      this[ConfigManager.getPropertyIdentifier() + propertyName] = value;
+    };
+  }
+  var accessor,
+    beforeAccessor = this.classMetadata.meta["after" + Util.capitalizeFirstLetter(accessorType)],
+    afterAccessor = this.classMetadata.meta["before" + Util.capitalizeFirstLetter(accessorType)],
+    hasBeforeAccessor = Util.exists(beforeAccessor),
+    hasAfterAccessor = Util.exists(afterAccessor);
+
+  if (!hasBeforeAccessor && !hasAfterAccessor) {
+    accessor = preAccessor;
+  }
+  else if (hasBeforeAccessor && !hasAfterAccessor) {
+    accessor = function () {
+      beforeAccessor.apply(this, arguments);
+      preAccessor.apply(this, arguments);
+    }
+  }
+  else if (!hasBeforeAccessor && hasAfterAccessor) {
+    accessor = function (value) {
+      preAccessor.apply(this, arguments);
+      afterAccessor.apply(this, arguments);
+    }
+  }
+  else {
+    accessor = function (value) {
+      beforeAccessor.apply(this, arguments);
+      preAccessor.apply(this, arguments);
+      afterAccessor.apply(this, arguments);
+    }
+  }
+  return accessor;
+};
+
+/**
  * Adds the methods to the class prototype
  */
-ClassMaker.prototype.buildMethods = function(){
-  for(var index in this.classMetadata.methods){
+ClassMaker.prototype.buildMethods = function () {
+  for (var index in this.classMetadata.methods) {
     this.constrClass.prototype[index] = this.classMetadata.methods[index];
   }
 };
@@ -998,8 +1114,8 @@ ClassMaker.prototype.buildMethods = function(){
 /**
  * Adds the private members (internals) to the class prototype
  */
-ClassMaker.prototype.buildInternals = function(){
-  for(var index in this.classMetadata.internals){
+ClassMaker.prototype.buildInternals = function () {
+  for (var index in this.classMetadata.internals) {
     this.constrClass.prototype[ConfigManager.getInternalIdentifier() + index] = this.classMetadata.internals[index];
   }
 };
@@ -1007,8 +1123,8 @@ ClassMaker.prototype.buildInternals = function(){
 /**
  * Adds the static memebers to the class prototype and the class object
  */
-ClassMaker.prototype.buildStatics = function(){
-  for(var index in this.classMetadata.statics){
+ClassMaker.prototype.buildStatics = function () {
+  for (var index in this.classMetadata.statics) {
     this.constrClass[index] = this.classMetadata.statics[index];
     this.constrClass.prototype[index] = this.classMetadata.statics[index];
   }
@@ -1017,19 +1133,29 @@ ClassMaker.prototype.buildStatics = function(){
 /**
  * Builds the class from the initial definition
  */
-ClassMaker.prototype.buildClass = function(){
+ClassMaker.prototype.buildClass = function () {
   this.createClass();
   this.buildPrototype();
   this.buildMethods();
   this.buildProperties();
   this.buildInternals();
   this.buildStatics();
-  this.buildMeta();
+  this.buildClassMeta();
 };
 
 /**
- * @description A traitmetadat object contains all the necesarry information to build a trait
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
+ * @description A traitmetadat object contains all the necesarry information to build a trait
  * @constructor
  * @param {String} traitName
  * @param {Array} traits
@@ -1065,8 +1191,18 @@ TraitMetadata.prototype.buildFinalDefinition = function(){
 };
 
 /**
- * @description Class for building traits that can be mixed with class definitions
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
+ * @description Class for building traits that can be mixed with class definitions
  * @constructor
  * @param {TraitMetadata} traitMeta the trait definition
  */
@@ -1086,9 +1222,19 @@ TraitMaker.prototype.buildTrait = function(){
 
 
 /**
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
  * @description Allows creation of objects (singletons) by creating a new class and instantiating
  * only one object.
- * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
  * @constructor
  * @param objectMeta
  */
@@ -1115,12 +1261,29 @@ ObjectMaker.prototype.buildObject = function(){
 
 
 /**
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
  * The public API that the library exposes.
  * @type {Object}
  */
 MAIN_NAMESPACE.FlancheJs = {
 
-  defineClass: function(className, config){
+  /**
+   * Creates a class based on the given configuration
+   * @see The README.md for more details
+   * @param {String} className the name of the class
+   * @param {Object} config configuration object as per docs
+   */
+  defineClass: function (className, config) {
     var meta = new ClassMetadata(className,
       config.init,
       config.extends,
@@ -1133,13 +1296,23 @@ MAIN_NAMESPACE.FlancheJs = {
     classMaker.buildClass();
   },
 
-  defineTrait: function(traitName, config){
+  /**
+   * Defines a trait based on the given configuration
+   * @param {String} traitName the name of the trait
+   * @param {Object} config configuration object as per docs
+   */
+  defineTrait: function (traitName, config) {
     var traitMeta = new TraitMetadata(traitName, config.implements, config.properties, config.methods, config.internals, config.statics);
     var traitMaker = new TraitMaker(traitMeta);
     traitMaker.buildTrait();
   },
 
-  defineObject: function(objectName, config){
+  /**
+   * Defines a singleton object
+   * @param {String} objectName the name of the object
+   * @param {Object} config configuration object as per docs
+   */
+  defineObject: function (objectName, config) {
     var meta = new ClassMetadata(objectName,
       config.init,
       config.extends,
@@ -1147,25 +1320,67 @@ MAIN_NAMESPACE.FlancheJs = {
       config.properties,
       config.methods,
       config.internals,
-      config.statics);
+      config.statics,
+      config.meta
+    );
     var objectMaker = new ObjectMaker(meta);
     objectMaker.buildObject();
   },
 
-  import: function(objectName, callback, context){
+  /**
+   * Imports an object and executes the given callback when the object was loaded
+   * @param {String} objectName the name of the object to load (e.g. a class or some trait)
+   * @param {Function} callback the function to be executed once the object was loaded
+   * @param {Object} context the value of the *this* variable inside the callback
+   */
+  import: function (objectName, callback, context) {
     var specs = ConfigManager.getSpecs();
     var importer = new Importer(specs);
     importer.import(objectName, callback, context);
   },
 
+  /**
+   * Allows for some options to be configured according to the needs of the user program
+   * @see ConfigManager for more information on which options can be modified or check the docs
+   */
   config    : ConfigManager,
+  /**
+   * Class for defining specification objects for javascript files created with
+   * this framework
+   * @param {String} objectName the name of the object for which the spec is written (e.g. class name)
+   * @param {String} filePath the path to the file relative to ConfigManager.getApplicationPath
+   * @param {Array} dependencies a list of specs that the file is dependent on
+   */
   Spec      : Spec,
+  /**
+   * A list of exceptions that can be thrown during the construction or importing of the objects
+   */
   exceptions: {
+    /**
+     * This exception is thrown when an error occurred in the building process (i.e. some wrong config option)
+     */
     BuildException    : BuildException,
+    /**
+     * This exception is thrown when an import fails for some reason
+     */
     ImportException   : ImportException,
+    /**
+     * Generic Exception from which all the exceptions in the class inherit
+     */
     FlancheJsException: FlancheJsException
   }
 };/**
+ * Copyright (c) <2012> <S.C. Flanche Creative Labs SRL>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * @author <a href="mailto:alex@flanche.net">Alex Dumitru</a>
+ */
+
+/**
  * This files is used together with InternalHeader.js to enclose the files on deployment
  * in a function to limit the scope of the variables in this library
  */

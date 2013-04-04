@@ -9,9 +9,9 @@ FlancheJs.defineTrait("Rj.util.Observable", {
   methods:{
     /**
      * Adds a listener to the events fired by this object
-     * @param <string> caller - a identifier for the object that is requesting the addon
-     * @param <string> event - the name of the event you want to listen to
-     * @param <function> callback - a callback function that will be executed once the event is fired
+     * @param {String} caller - a identifier for the object that is requesting the addon
+     * @param {String} event - the name of the event you want to listen to
+     * @param {Function} callback - a callback function that will be executed once the event is fired
      */
     addListener:function (caller, event, callback) {
       if (!this._listeners[event]) {
@@ -22,8 +22,8 @@ FlancheJs.defineTrait("Rj.util.Observable", {
 
     /**
      * Removes a listnener from the list
-     * @param <string> caller - @see addListener
-     * @param <string> event - @see addListener
+     * @param {String} caller - @see addListener
+     * @param {String} event - @see addListener
      */
     removeListener:function (caller, event) {
       delete(this._listeners[event][caller]);
